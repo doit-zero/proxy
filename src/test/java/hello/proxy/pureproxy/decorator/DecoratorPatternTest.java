@@ -12,7 +12,22 @@ public class DecoratorPatternTest {
          Component realComponent = new RealComponent();
          DecoratorPatternClient client = new DecoratorPatternClient(realComponent);
          client.execute();
+    }
+
+    @Test
+    void decorator1(){
+        Component realComponent = new RealComponent();
+        Component messageComponent = new MessageDecorator(realComponent);
+        DecoratorPatternClient client = new DecoratorPatternClient(messageComponent);
         client.execute();
+    }
+
+    @Test
+    void decorator2(){
+        Component realComponent = new RealComponent();
+        Component messageComponent = new MessageDecorator(realComponent);
+        Component timeDecorator = new TimeDecorator(messageComponent);
+        DecoratorPatternClient client = new DecoratorPatternClient(timeDecorator);
         client.execute();
     }
 }
